@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EjemploListV.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Listado de Frutas" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label Text="Nombre de la fruta:" Margin="5"/>
+        <Entry x:Name="valor" Margin="5"/>
+        <Label Text="La URL de la Imagen de la Fruta" Margin="5"/>
+        <Entry x:Name="direccionurl" Margin="5"/>
+        <Button Text="Agregar" CornerRadius="24"
+                BackgroundColor="Orange" Clicked="Button_Clicked" Margin="5"/>
+        <ListView x:Name="milista"
+                  ItemTapped="milista_ItemTapped"
+                  Margin="5"
+                  SeparatorColor="Coral"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="MenuItem_Clicked"
+                                      Text="Mostrar"
+                                      CommandParameter="{Binding Nombre}"/>
+                            <MenuItem Clicked="MenuItem_Clicked_1"
+                                      Text="Borrar"
+                                      IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Url}"/>
+                            <StackLayout Padding="15,0">
+                                <Label Text="Nombre de la fruta:"/>
+                                <Label Text="{Binding Nombre}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
